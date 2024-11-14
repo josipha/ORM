@@ -5,7 +5,7 @@
 To develop a Django application to store and retrieve data from a bank loan database using Object Relational Mapping(ORM).
 
 ## ENTITY RELATIONSHIP DIAGRAM
-
+![alt text](<er orm.png>)
 
 
 ## DESIGN STEPS
@@ -23,12 +23,33 @@ Enter the code for admin.py and models.py
 Execute Django admin and create details for 10 books
 
 ## PROGRAM
+```
+admin.py
+from django.contrib import admin
+
+from .models import loan,loanADMIN
+# Register your models here.
+admin.site.register(loan,loanADMIN)
+
+models.py
+
+from django.db import models
+from django.contrib import admin
+class loan (models.Model):
+    loan_id=models.IntegerField(primary_key=True)
+    loan_type=models.CharField(max_length=30)
+    loan_amnt=models.FloatField()
+    customer_acntno=models.IntegerField()
+    cust_name=models.CharField(max_length=50)
+ 
+class loanADMIN(admin.ModelAdmin):
+    list_display=('loan_id','loan_type','loan_amnt','customer_acntno','cust_name')
+ ```
 
 
 
 ## OUTPUT
-
-Include the screenshot of your admin page.
+![alt text](<Screenshot 2024-11-14 132417.png>)
 
 
 ## RESULT
